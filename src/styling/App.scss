@@ -1,0 +1,13 @@
+.logo__container {
+  display: flex;
+  position: absolute;
+  top: 30px;
+  left: 15px;
+  height: 80px;
+  width: 160px;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
