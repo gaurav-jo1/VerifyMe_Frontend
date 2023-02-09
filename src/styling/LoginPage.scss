@@ -3,14 +3,117 @@
   width: 100%;
   background-image: url(../assets/Frame1.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
+  background-position: center;
+  background-color: rgb(225, 209, 209);
 }
 
 .LoginPage__signin {
+  background: rgba(245, 245, 245, 0.85);
   position: absolute;
+  margin-top: 40px;
   right: 200px;
-  width: 380px;
-  height: 500px;
-  border: 1px solid rgb(149, 149, 149);
+  width: 350px;
+  height: 460px;
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  padding: 60px 30px;
+  font-family: sans-serif;
+
+  .LoginPage__signin-welcome {
+    span {
+      color: orange;
+      text-transform: uppercase;
+    }
+  }
+
+  .LoginPage__signin-signin {
+    margin: 12px 0;
+  }
+
+  .LoginPage__signin-google {
+    display: flex;
+    text-align: center;
+    padding: 8px 22px;
+    border-radius: 10px;
+    width: 190px;
+    // background: rgb(222, 222, 222);
+    background-color: rgb(177, 223, 242);
+    margin-top: 10px;
+    cursor: pointer;
+
+    p {
+      color: blueviolet;
+      font-size: 14px;
+    }
+  }
+
+  .LoginPage__signin-up {
+    margin-top: 20px;
+
+    input {
+      width: 88%;
+      padding: 10px 20px;
+      background: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    input:focus {
+      outline: 0.5px solid blueviolet;
+    }
+
+    p {
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+  }
+
+  .LoginPage__forgot-password {
+    font-size: 11px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    color: blue;
+  }
+
+  .LoginPage__login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    button {
+      padding: 10px 60px;
+      background: green;
+      color: white;
+      border: none;
+      font-size: 12px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+  }
+
+  .LoginPage__link-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    color: gray;
+
+    p {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    a {
+      margin-top: 5px;
+      font-size: 13px;
+    }
+  }
 }
+
+
