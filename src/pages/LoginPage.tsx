@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
-    <div className="LoginPage__container">
+    <div className="LoginPage__container display__flex">
       <Logo />
       <div className="LoginPage__signin">
         <div className="LoginPage__signin-welcome">

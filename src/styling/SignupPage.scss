@@ -1,0 +1,16 @@
+.SignupPage__container {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../assets/Frame1.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.SingupPage__signup {
+  position: absolute;
+  right: 200px;
+  width: 380px;
+  height: 500px;
+  border: 1px solid rgb(149, 149, 149);
+  border-radius: 30px;
+}
