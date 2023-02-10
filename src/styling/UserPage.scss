@@ -1,4 +1,4 @@
-.LoginPage__container {
+.UserPage__container {
   height: 100vh;
   width: 100%;
   // background-image: url(../assets/Frame1.png);
@@ -8,11 +8,7 @@
   background-color: rgb(225, 209, 209);
 }
 
-.LoginPage__signup {
-  height: 500px !important
-}
-
-.LoginPage__signin {
+.UserPage__signin {
   background: rgba(245, 245, 245, 0.85);
   position: absolute;
   margin-top: 40px;
@@ -25,18 +21,18 @@
   padding: 60px 30px;
   font-family: sans-serif;
 
-  .LoginPage__signin-welcome {
+  .UserPage__signin-welcome {
     span {
       color: orange;
       text-transform: uppercase;
     }
   }
 
-  .LoginPage__signin-signin {
+  .UserPage__signin-signin {
     margin: 12px 0;
   }
 
-  .LoginPage__signin-google {
+  .UserPage__signin-google {
     display: flex;
     text-align: center;
     padding: 8px 22px;
@@ -57,12 +53,13 @@
     margin-top: $mg;
 
     input {
-      width: 88%;
+      width: 86%;
       padding: 10px 20px;
       background: white;
       border: none;
       border-radius: 6px;
       font-size: 12px;
+      border: 0.5px solid gray;
     }
 
     input:focus {
@@ -76,16 +73,23 @@
     }
   }
 
-  .LoginPage__signin-up{
-    @include siginUpInput(20px)
-
+  .UserPage__signin-up {
+    @include siginUpInput(20px);
   }
 
-  .LoginPage__signup-up {
-    @include siginUpInput(0)
+  .UserPage__signup-up {
+    @include siginUpInput(0);
+
+    .UserPage__signup_username_name {
+      display: flex;
+
+      input {
+        width: 72% !important;
+      }
+    }
   }
 
-  .LoginPage__forgot-password {
+  .UserPage__forgot-password {
     font-size: 11px;
     margin-top: 20px;
     display: flex;
@@ -93,7 +97,7 @@
     color: blue;
   }
 
-  .LoginPage__login-button {
+  .UserPage__login-button {
     display: flex;
     justify-content: flex-end;
     margin-top: 40px;
@@ -108,11 +112,11 @@
     }
   }
 
-  .LoginPage__link-signup {
+  @mixin linkS($mg) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    margin-top: $mg;
     color: gray;
 
     p {
@@ -125,38 +129,84 @@
       font-size: 13px;
     }
   }
+
+  .UserPage__link-signup {
+    @include linkS(40px);
+  }
+
+  .UserPage__link-signin {
+    @include linkS(55px);
+  }
 }
 
-@media (max-width: 1025px){
-  .LoginPage__container {
+@media (max-width: 1025px) {
+  .UserPage__container {
     display: flex;
     flex-direction: column;
   }
 
-
-  .LoginPage__signin {
+  .UserPage__signin {
     position: static;
     margin-top: 0px;
     padding: 40px 20px;
   }
 }
 
-@media (max-width: 450px){
-  .LoginPage__container {
-    align-items:center;
-    justify-content:center;
+@media (max-width: 450px) {
+  .UserPage__container {
+    align-items: center;
+    justify-content: center;
   }
-  .LoginPage__signin {
+  .UserPage__signin {
     width: 300px;
     height: 440px;
 
-    .LoginPage__login-button {
+    .UserPage__login-button {
       margin-top: 30px;
     }
-    .LoginPage__link-signup {
+    .UserPage__link-signup {
       margin-top: 30px;
+    }
+
+    .UserPage__signup-up {
+      input {
+        width: 85%;
+      }
+
+      .UserPage__signup_username_name {
+        display: flex;
+
+        input {
+          width: 68% !important;
+        }
+      }
+    }
+    .UserPage__link-signin {
+      margin-top: 45px;
     }
   }
 }
 
-// @media (max-width: 320px){}
+@media (max-width: 320px) {
+  .UserPage__signin {
+    width: 270px;
+    height: 440px;
+
+    .UserPage__signup-up {
+      input {
+        width: 83%;
+      }
+
+      .UserPage__signup_username_name {
+        display: flex;
+
+        input {
+          width: 65% !important;
+        }
+      }
+    }
+    .UserPage__link-signin {
+      margin-top: 45px;
+    }
+  }
+}
