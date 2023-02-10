@@ -3,8 +3,8 @@
   position: absolute;
   top: 30px;
   left: 5px;
-  height: 80px;
-  width: 160px;
+  height: 100px;
+  width: 180px;
 
   img {
     height: 100%;
@@ -16,4 +16,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1025px){
+  .logo__container {
+    position: static;
+    padding-bottom: 50px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 450px){
+  .logo__container {
+    display: none;
+  }
 }
