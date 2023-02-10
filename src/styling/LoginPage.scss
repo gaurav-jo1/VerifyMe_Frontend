@@ -8,6 +8,10 @@
   background-color: rgb(225, 209, 209);
 }
 
+.LoginPage__signup {
+  height: 500px !important
+}
+
 .LoginPage__signin {
   background: rgba(245, 245, 245, 0.85);
   position: absolute;
@@ -49,8 +53,8 @@
     }
   }
 
-  .LoginPage__signin-up {
-    margin-top: 20px;
+  @mixin siginUpInput($mg) {
+    margin-top: $mg;
 
     input {
       width: 88%;
@@ -70,6 +74,15 @@
       margin-bottom: 10px;
       margin-top: 20px;
     }
+  }
+
+  .LoginPage__signin-up{
+    @include siginUpInput(20px)
+
+  }
+
+  .LoginPage__signup-up {
+    @include siginUpInput(0)
   }
 
   .LoginPage__forgot-password {
