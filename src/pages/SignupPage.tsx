@@ -41,7 +41,7 @@ const SignupPage = () => {
         </div>
         <div className="UserPage__link-signin">
           <p>Have an Account?</p>
-          <Link to="/">Sign in</Link>
+          <Link to="/login">Sign in</Link>
         </div>
       </div>
     </div>
