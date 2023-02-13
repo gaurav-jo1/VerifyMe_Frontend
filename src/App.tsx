@@ -8,15 +8,16 @@ import RequireAuth from "./utils/RequireAuth";
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route element={<RequireAuth/>} >
-          <Route path="/" element={<HomePage />} />
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-      </Routes>
-    </div>
+
+      <div className="App">
+        <Routes>
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </div>
   );
 }
 
