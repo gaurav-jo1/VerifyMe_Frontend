@@ -11,10 +11,14 @@ interface CurrentUserContextType {
     setLoading:React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface Props {
+    children: ReactNode
+}
+
 export const AuthContext = createContext<CurrentUserContextType>({} as CurrentUserContextType)
 
 
-const AuthProvider = ({ children }:{children:React.ReactNode}) => {
+const AuthProvider:React.FC<Props> = ({ children }) => {
     let [authTokens, setAuthTokens] = useState<string | null>(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens') || "") : null)
     let [user, setUser] = useState<string | null>(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens') || "") : null)
     let [loading, setLoading] = useState<boolean>(false)
