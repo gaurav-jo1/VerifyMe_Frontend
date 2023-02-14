@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import HomePage from "./pages/HomePage";
 import RequireAuth from "./utils/RequireAuth";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   return (

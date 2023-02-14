@@ -1,7 +1,7 @@
 import React from 'react'
 import verifyme from "../assets/verifyme.png"
 
-const logo = () => {
+const Logo = () => {
   return (
     <div className="logo__container">
       <img src={verifyme} alt="logo" />
@@ -9,4 +9,4 @@ const logo = () => {
   )
 }
 
-export default logo
+export default Logo
