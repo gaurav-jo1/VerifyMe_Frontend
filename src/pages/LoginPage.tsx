@@ -11,33 +11,57 @@ import LoadingScreen from "../components/LoadingScreen";
 const UserPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
   const [loadingScreen, setLoadingScreen] = useState<boolean>(false);
+  const [warningUsername, setWarningUsername] = useState<boolean>(false);
+  const [warningPassword, setWarningPassword] = useState<boolean>(false);
   const { setAuthTokens, setUser, setLoading } = useContext(AuthContext);
   let navigate = useNavigate();
 
   console.log(error);
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoadingScreen(true);
+    setWarningUsername(false);
+    setWarningPassword(false);
+    setError(false)
 
-    axios
-      .post("http://127.0.0.1:8000/api/token/", { username, password })
-      .then((response) => {
-        console.log(response.data);
-        setAuthTokens(response.data.data);
-        setUser(jwt_decode(response.data.data.access));
-        localStorage.setItem("authTokens", JSON.stringify(response.data.data));
-        navigate("/");
-        setLoading(true);
-      })
-      .catch((error) => {
-        setError(error.message);
-      })
-      .finally(() => {
-        setLoadingScreen(false);
-      });
+    if (username && password) {
+      e.preventDefault();
+      setLoadingScreen(true);
+
+      axios
+        .post("http://127.0.0.1:8000/api/token/", { username, password })
+        .then((response) => {
+          console.log(response.data);
+          setAuthTokens(response.data.data);
+          setUser(jwt_decode(response.data.data.access));
+          localStorage.setItem(
+            "authTokens",
+            JSON.stringify(response.data.data)
+          );
+          navigate("/");
+          setLoading(true);
+        })
+        .catch((error) => {
+          console.log(error.message);
+          if (error.message) {
+            setError(true);
+          }
+        })
+        .finally(() => {
+          setLoadingScreen(false);
+        });
+    } else if (!username && !password) {
+      console.log("Please enter username and password");
+      setWarningUsername(true);
+      setWarningPassword(true);
+    } else if (!username) {
+      console.log("Please enter Username ");
+      setWarningUsername(true);
+    } else if (!password) {
+      console.log("Please enter Password ");
+      setWarningPassword(true);
+    }
   };
 
   return (
@@ -61,30 +85,71 @@ const UserPage: React.FC = () => {
               <img src={Google} alt="google" height={16} width={16} />
               <p>&nbsp; Sign in with Google</p>
             </div>
-            <div className="UserPage__signin-up">
+            <form className="UserPage__signin-up">
               <div className="UserPage__signin-username">
-                <p>Enter you username or email address</p>
-                <input
-                  type="text"
-                  placeholder="Username or email address"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
+                {warningUsername ? (
+                  <p style={{ color: "red" }}>
+                    Enter you username or email address
+                  </p>
+                ) : (
+                  <p>Enter you username or email address</p>
+                )}
+                {warningUsername ? (
+                  <input
+                    type="text"
+                    placeholder="Username or email address"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    style={{ border: "1px solid red" }}
+                    required
+                  />
+                ) : (
+                  <input
+                    type="text"
+                    placeholder="Username or email address"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
+                )}
               </div>
               <div className="UserPage__signin-password">
-                <p>Enter your password</p>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                {warningPassword ? (
+                  <p style={{ color: "red" }}>Enter your password</p>
+                ) : (
+                  <p>Enter your password</p>
+                )}
+                {warningPassword ? (
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={{ border: "1px solid red" }}
+                    required
+                  />
+                ) : (
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                )}
               </div>
-            </div>
+            </form>
             <div className="UserPage__forgot-password">
-              <p>Forgot Password?</p>e
+              {error ? (
+                <div className="UserPage_wrong-userinfo">
+                  <span>Enter correct Username and Password</span>
+                  <p>Forgot Password?</p>
+                </div>
+              ) : (
+                <div className="UserPage__forgot-password-p">
+                  <p>Forgot Password?</p>
+                </div>
+              )}
             </div>
             <div className="UserPage__login-button">
               <button type="submit" onClick={handleLogin}>

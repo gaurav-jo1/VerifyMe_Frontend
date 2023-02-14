@@ -90,11 +90,36 @@
   }
 
   .UserPage__forgot-password {
-    font-size: 11px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    color: blue;
+    .UserPage_wrong-userinfo {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      align-items: center;
+
+      span {
+        color: red;
+        font-size: 13px;
+        margin-top: 17px;
+      }
+
+      p {
+        font-size: 11px;
+        margin-top: 20px;
+        color: blue;
+      }
+    }
+
+    .UserPage__forgot-password-p {
+      display: flex;
+      justify-content: flex-end;
+
+      p {
+        font-size: 11px;
+        margin-top: 20px;
+        color: blue;
+      }
+    }
+
   }
 
   .UserPage__login-button {
