@@ -29,16 +29,11 @@ const UserPage: React.FC = () => {
       e.preventDefault();
       setLoadingScreen(true);
 
-      axios
-        .post("http://127.0.0.1:8000/api/token/", { username, password })
+      axios.post("http://127.0.0.1:8000/api/token/", { username, password })
         .then((response) => {
-          // console.log(response.data);
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));
-          localStorage.setItem(
-            "authTokens",
-            JSON.stringify(response.data)
-          );
+          localStorage.setItem("authTokens",JSON.stringify(response.data));
           navigate("/");
           setLoading(true);
         })
@@ -52,31 +47,23 @@ const UserPage: React.FC = () => {
           setLoadingScreen(false);
         });
     } else if (!username && !password) {
-      // console.log("Please enter username and password");
       setWarningUsername(true);
       setWarningPassword(true);
     } else if (!username) {
-      // console.log("Please enter Username ");
       setWarningUsername(true);
     } else if (!password) {
-      // console.log("Please enter Password ");
       setWarningPassword(true);
     }
   };
 
   return (
     <div>
-      {loadingScreen ? (
-        <LoadingScreen />
-      ) : (
+      {loadingScreen ? (<LoadingScreen /> ) : (
         <div className="UserPage__container display__flex">
           <Logo />
           <div className="UserPage__signin">
             <div className="UserPage__signin-welcome">
-              <p>
-                {" "}
-                Welcome to <span>VerifyME</span>{" "}
-              </p>
+              <p> Welcome to <span>VerifyME</span> </p>
             </div>
             <div className="UserPage__signin-signin">
               <h1>Sign in</h1>
@@ -95,47 +82,28 @@ const UserPage: React.FC = () => {
                   <p>Enter you username or email address</p>
                 )}
                 {warningUsername ? (
-                  <input
-                    type="text"
-                    placeholder="Username or email address"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    style={{ border: "1px solid red" }}
-                    required
-                  />
+                  <input type="text" placeholder="Username or email address"
+                    value={username} onChange={(e) => setUsername(e.target.value)}
+                    style={{ border: "1px solid red" }} required />
                 ) : (
-                  <input
-                    type="text"
-                    placeholder="Username or email address"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                  />
+                  <input type="text" placeholder="Username or email address"
+                    value={username} onChange={(e) => setUsername(e.target.value)}
+                    required />
                 )}
               </div>
               <div className="UserPage__signin-password">
+                {warningPassword ? (<p style={{ color: "red" }}>Enter your password</p> ) 
+                  : ( <p>Enter your password</p> )
+                }
+
                 {warningPassword ? (
-                  <p style={{ color: "red" }}>Enter your password</p>
+                  <input type="password" placeholder="Password"
+                    value={password} onChange={(e) => setPassword(e.target.value)}
+                    style={{ border: "1px solid red" }} required />
                 ) : (
-                  <p>Enter your password</p>
-                )}
-                {warningPassword ? (
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={{ border: "1px solid red" }}
-                    required
-                  />
-                ) : (
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
+                  <input type="password" placeholder="Password"
+                    value={password} onChange={(e) => setPassword(e.target.value)}
+                    required />
                 )}
               </div>
             </form>

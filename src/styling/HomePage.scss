@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Julee&display=swap");
+
 .HomePage__container {
   height: 100vh;
   display: flex;
@@ -10,7 +12,7 @@
 
   .HomePage__logo-container {
     img {
-      background-color: rgba(255, 255, 255, 0.329);
+      background-color: rgba(255, 255, 255, 0.685);
     }
   }
 
@@ -30,6 +32,7 @@
     font-size: 150px;
     text-transform: capitalize;
     color: white;
+    font-family: "Julee", cursive;
   }
 
   p {
@@ -46,17 +49,45 @@
     align-items: center;
   }
 
-  .HomePage__userinfo-container {
+  @mixin userInfo($pt) {
     display: flex;
     flex-direction: row;
+    padding-top: $pt;
 
     p {
-        color: rgb(161, 140, 140);
-        font-size: 30px;
-        padding: 10px 90px;
-        span {
-            color: white;
-        }
+      color: rgb(161, 140, 140);
+      font-size: 30px;
+    }
+
+
+    span {
+      color: white;
+      font-size: 30px;
+    }
+  }
+
+  .HomePage__userinfo-container_1 {
+    @include userInfo(30px)
+  }
+  .HomePage__userinfo-container_2 {
+    @include userInfo(15px)
+  }
+
+  .HomePage__logout {
+    margin-top: 20px;
+    button {
+      padding: 15px 40px;
+      border-radius: 10px;
+      border: 1px solid rgb(255, 255, 255);
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      background-color: #e22d90;
+      color: whitesmoke;
+
+      &:hover {
+        background-color: red;
+      }
     }
   }
 }
