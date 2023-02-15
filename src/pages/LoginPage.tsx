@@ -18,7 +18,7 @@ const UserPage: React.FC = () => {
   const { setAuthTokens, setUser, setLoading } = useContext(AuthContext);
   let navigate = useNavigate();
 
-  console.log(error);
+  // console.log(error);
 
   const handleLogin = (e: React.FormEvent) => {
     setWarningUsername(false);
@@ -33,11 +33,11 @@ const UserPage: React.FC = () => {
         .post("http://127.0.0.1:8000/api/token/", { username, password })
         .then((response) => {
           console.log(response.data);
-          setAuthTokens(response.data.data);
-          setUser(jwt_decode(response.data.data.access));
+          setAuthTokens(response.data);
+          setUser(jwt_decode(response.data.access));
           localStorage.setItem(
             "authTokens",
-            JSON.stringify(response.data.data)
+            JSON.stringify(response.data)
           );
           navigate("/");
           setLoading(true);

@@ -1,14 +1,15 @@
 // import React, { useContext } from "react";
 // import { AuthContext } from "../context/AuthContext";
-import React from "react";
-import {Navigate, Outlet} from "react-router-dom"
+import React, { useContext } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-const RequireAuth:React.FC = () => {
-    let auth = false;
-    if (!auth) {
-        return <Navigate to="/login" />
-    }
-    return <Outlet />
-}
+const RequireAuth: React.FC = () => {
+  let { user } = useContext(AuthContext);
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+  return <Outlet />;
+};
 
 export default RequireAuth;

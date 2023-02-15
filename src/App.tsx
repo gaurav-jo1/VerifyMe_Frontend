@@ -5,11 +5,11 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import HomePage from "./pages/HomePage";
 import RequireAuth from "./utils/RequireAuth";
-import LoadingScreen from "./components/LoadingScreen";
+import AuthProvider from "./context/AuthContext";
 
 function App() {
   return (
-
+    <AuthProvider>
       <div className="App">
         <Routes>
           <Route element={<RequireAuth />}>
@@ -19,6 +19,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </div>
+    </AuthProvider>
   );
 }
 

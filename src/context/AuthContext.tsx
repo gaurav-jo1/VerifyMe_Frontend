@@ -9,6 +9,7 @@ interface CurrentUserContextType {
     setUser:React.Dispatch<React.SetStateAction<string | null>>;
     loading: boolean;
     setLoading:React.Dispatch<React.SetStateAction<boolean>>;
+    callLogout: () => void;
 }
 
 interface Props {
@@ -21,22 +22,22 @@ export const AuthContext = createContext<CurrentUserContextType>({} as CurrentUs
 const AuthProvider:React.FC<Props> = ({ children }) => {
     let [authTokens, setAuthTokens] = useState<string | null>(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens') || "") : null)
     let [user, setUser] = useState<string | null>(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens') || "") : null)
-    let [loading, setLoading] = useState<boolean>(false)
+    let [loading, setLoading] = useState<boolean>(true)
 
     // call logout
 
-    // function callLogout() {
-    //     setAuthTokens(null)
-    //     setUser(null)
-    //     localStorage.removeItem('authTokens')
-    // }
+    function callLogout() {
+        setAuthTokens(null)
+        setUser(null)
+        localStorage.removeItem('authTokens')
+    }
     // Updating refresh token
 
 
     // updating refresh token after revisit and access token expire time
 
     return (
-        <AuthContext.Provider value={{ user, setAuthTokens, setUser, authTokens, setLoading, loading}}>
+        <AuthContext.Provider value={{ user, setAuthTokens, setUser, authTokens, setLoading, loading,callLogout}}>
             {loading ? children : null }
         </AuthContext.Provider>
     )
