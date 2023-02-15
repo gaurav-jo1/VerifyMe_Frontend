@@ -27,11 +27,15 @@ export const AuthContext = createContext<CurrentUserContextType>(
 
 const AuthProvider: React.FC<Props> = ({ children }) => {
   let [authTokens, setAuthTokens] = useState<AccessTokensType>(() =>
-    localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens") || "") : undefined
+    localStorage.getItem("authTokens")
+      ? JSON.parse(localStorage.getItem("authTokens") || "")
+      : undefined
   );
 
   let [user, setUser] = useState<string | undefined>(() =>
-    localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens") || "") : undefined
+    localStorage.getItem("authTokens")
+      ? jwt_decode(localStorage.getItem("authTokens") || "")
+      : undefined
   );
 
   let [loading, setLoading] = useState<boolean>(false);
@@ -46,7 +50,9 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
 
   // Updating refresh token
   function updateAccess() {
-    if (authTokens) {axios.post("http://127.0.0.1:8000/api/token/refresh/", {
+    if (authTokens) {
+      axios
+        .post("http://127.0.0.1:8000/api/token/refresh/", {
           refresh: authTokens.refresh,
         })
         .then(function (response) {
@@ -67,7 +73,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     if (!loading) {
       updateAccess();
     }
-    
+
     if (!authTokens) {
       setLoading(true);
     }
@@ -84,7 +90,16 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, setAuthTokens, setUser, authTokens, setLoading, loading, callLogout,}}>
+      value={{
+        user,
+        setAuthTokens,
+        setUser,
+        authTokens,
+        setLoading,
+        loading,
+        callLogout,
+      }}
+    >
       {loading ? children : null}
     </AuthContext.Provider>
   );

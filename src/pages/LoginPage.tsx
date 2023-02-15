@@ -61,7 +61,7 @@ const UserPage: React.FC = () => {
       {loadingScreen ? (<LoadingScreen /> ) : (
         <div className="UserPage__container display__flex">
           <Logo />
-          <div className="UserPage__signin">
+          <form className="UserPage__signin">
             <div className="UserPage__signin-welcome">
               <p> Welcome to <span>VerifyME</span> </p>
             </div>
@@ -72,7 +72,7 @@ const UserPage: React.FC = () => {
               <img src={Google} alt="google" height={16} width={16} />
               <p>&nbsp; Sign in with Google</p>
             </div>
-            <form className="UserPage__signin-up">
+            <div className="UserPage__signin-up">
               <div className="UserPage__signin-username">
                 {warningUsername ? (
                   <p style={{ color: "red" }}>
@@ -82,13 +82,13 @@ const UserPage: React.FC = () => {
                   <p>Enter you username or email address</p>
                 )}
                 {warningUsername ? (
-                  <input type="text" placeholder="Username or email address"
+                  <input type="text" required placeholder="Username or email address"
                     value={username} onChange={(e) => setUsername(e.target.value)}
-                    style={{ border: "1px solid red" }} required />
+                    style={{ border: "1px solid red" }}  />
                 ) : (
-                  <input type="text" placeholder="Username or email address"
+                  <input type="text" required placeholder="Username or email address"
                     value={username} onChange={(e) => setUsername(e.target.value)}
-                    required />
+                     />
                 )}
               </div>
               <div className="UserPage__signin-password">
@@ -97,16 +97,16 @@ const UserPage: React.FC = () => {
                 }
 
                 {warningPassword ? (
-                  <input type="password" placeholder="Password"
+                  <input type="password" required placeholder="Password"
                     value={password} onChange={(e) => setPassword(e.target.value)}
-                    style={{ border: "1px solid red" }} required />
+                    style={{ border: "1px solid red" }}  />
                 ) : (
-                  <input type="password" placeholder="Password"
+                  <input type="password" required placeholder="Password"
                     value={password} onChange={(e) => setPassword(e.target.value)}
-                    required />
+                     />
                 )}
               </div>
-            </form>
+            </div>
             <div className="UserPage__forgot-password">
               {error ? (
                 <div className="UserPage_wrong-userinfo">
@@ -128,7 +128,7 @@ const UserPage: React.FC = () => {
               <p>No Account?</p>
               <Link to="/signup">Sign up</Link>
             </div>
-          </div>
+          </form>
         </div>
       )}
     </div>
