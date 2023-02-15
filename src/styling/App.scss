@@ -2,13 +2,14 @@
   display: flex;
   position: absolute;
   top: 30px;
-  left: 5px;
+  left: 30px;
   height: 100px;
-  width: 180px;
+  width: 160px;
 
   img {
     height: 100%;
     width: 100%;
+    border-radius: 50%;
   }
 }
 
@@ -18,7 +19,7 @@
   align-items: center;
 }
 
-@media (max-width: 1025px){
+@media (max-width: 1025px) {
   .logo__container {
     position: static;
     padding-bottom: 50px;
@@ -26,7 +27,7 @@
   }
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .logo__container {
     display: none;
   }

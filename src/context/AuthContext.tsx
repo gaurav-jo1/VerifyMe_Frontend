@@ -3,11 +3,11 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 
 type AccessTokensType = {
-    access: string | undefined;
-    refresh: string | undefined;
-  }  
+  access: string | undefined;
+  refresh: string | undefined;
+};
 interface CurrentUserContextType {
-  authTokens: AccessTokensType ;
+  authTokens: AccessTokensType;
   setAuthTokens: React.Dispatch<React.SetStateAction<AccessTokensType>>;
   user: string | undefined;
   setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -37,7 +37,6 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   );
   let [loading, setLoading] = useState<boolean>(false);
 
-
   // call logout
 
   function callLogout() {
@@ -48,11 +47,12 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   // Updating refresh token
   function updateAccess() {
     if (authTokens) {
-      axios.post("http://127.0.0.1:8000/api/token/refresh/", {
+      axios
+        .post("http://127.0.0.1:8000/api/token/refresh/", {
           refresh: authTokens.refresh,
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));
           localStorage.setItem("authTokens", JSON.stringify(response.data));
@@ -80,7 +80,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
       }
     }, twentyMinutes);
     return () => clearInterval(interval);
-  }, [authTokens, loading]); 
+  }, [authTokens, loading]);
 
   return (
     <AuthContext.Provider

@@ -1,0 +1,62 @@
+.HomePage__container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #8e2de2, #e00000);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+
+  .HomePage__logo-container {
+    img {
+      background-color: rgba(255, 255, 255, 0.329);
+    }
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  h1 {
+    font-size: 150px;
+    text-transform: capitalize;
+    color: white;
+  }
+
+  p {
+    font-size: 40px;
+    color: white;
+  }
+
+  img {
+    padding: 0 10px;
+  }
+
+  .HomePage__message-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .HomePage__userinfo-container {
+    display: flex;
+    flex-direction: row;
+
+    p {
+        color: rgb(161, 140, 140);
+        font-size: 30px;
+        padding: 10px 90px;
+        span {
+            color: white;
+        }
+    }
+  }
+}
