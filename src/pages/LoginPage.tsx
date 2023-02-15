@@ -32,7 +32,7 @@ const UserPage: React.FC = () => {
       axios
         .post("http://127.0.0.1:8000/api/token/", { username, password })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));
           localStorage.setItem(
@@ -43,7 +43,7 @@ const UserPage: React.FC = () => {
           setLoading(true);
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
           if (error.message) {
             setError(true);
           }
@@ -52,14 +52,14 @@ const UserPage: React.FC = () => {
           setLoadingScreen(false);
         });
     } else if (!username && !password) {
-      console.log("Please enter username and password");
+      // console.log("Please enter username and password");
       setWarningUsername(true);
       setWarningPassword(true);
     } else if (!username) {
-      console.log("Please enter Username ");
+      // console.log("Please enter Username ");
       setWarningUsername(true);
     } else if (!password) {
-      console.log("Please enter Password ");
+      // console.log("Please enter Password ");
       setWarningPassword(true);
     }
   };
