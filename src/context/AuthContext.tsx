@@ -14,6 +14,8 @@ interface CurrentUserContextType {
   setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  userCreated:boolean;
+  setUserCreated:React.Dispatch<React.SetStateAction<boolean>>;
   callLogout: () => void;
 }
 
@@ -39,6 +41,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   );
 
   let [loading, setLoading] = useState<boolean>(false);
+  let [userCreated, setUserCreated] = useState<boolean>(true)
 
   // call logout
 
@@ -98,6 +101,8 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
         setLoading,
         loading,
         callLogout,
+        userCreated,
+        setUserCreated
       }}
     >
       {loading ? children : null}

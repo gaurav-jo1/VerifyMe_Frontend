@@ -7,6 +7,8 @@ import Google from "../assets/google.png";
 import jwt_decode from "jwt-decode";
 import "../styling/UserPage.scss";
 import LoadingScreen from "../components/LoadingScreen";
+import Card from "../components/Card";
+import Celebration from "../components/Celebration";
 
 const UserPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -15,7 +17,8 @@ const UserPage: React.FC = () => {
   const [loadingScreen, setLoadingScreen] = useState<boolean>(false);
   const [warningUsername, setWarningUsername] = useState<boolean>(false);
   const [warningPassword, setWarningPassword] = useState<boolean>(false);
-  const { setAuthTokens, setUser, setLoading } = useContext(AuthContext);
+  const { setAuthTokens, setUser, setLoading,userCreated,setUserCreated } = useContext(AuthContext);
+
   let navigate = useNavigate();
 
   // console.log(error);
@@ -61,6 +64,8 @@ const UserPage: React.FC = () => {
       {loadingScreen ? (<LoadingScreen /> ) : (
         <div className="UserPage__container display__flex">
           <Logo />
+          {userCreated ? <Card/> : ""}
+          {userCreated ? <Celebration /> : ""}
           <form className="UserPage__signin">
             <div className="UserPage__signin-welcome">
               <p> Welcome to <span>VerifyME</span> </p>

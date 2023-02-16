@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import Logo from "../components/Logo";
 import "../styling/UserPage.scss";
 import { Link, useNavigate } from "react-router-dom";
 import LoadingScreen from "../components/LoadingScreen";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 const SignupPage = () => {
   const [warningUsername, setWarningUsername] = useState<boolean>(false);
@@ -15,6 +16,7 @@ const SignupPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loadingScreen, setLoadingScreen] = useState<boolean>(false);
+  const {setUserCreated} = useContext(AuthContext)
   let navigate = useNavigate();
 
 
@@ -37,6 +39,7 @@ const SignupPage = () => {
         })
         .then((response) => {
           console.log(response.data)
+          setUserCreated(true)
           navigate("/");
         })
         .catch((error) => {
@@ -55,12 +58,12 @@ const SignupPage = () => {
       setWarningPassword(true);
       setWarningEmail(true);
       setWarningname(true);
+    } else if (!email) {
+      setWarningEmail(true);
     } else if (!username) {
       setWarningUsername(true);
     } else if (!first_name) {
       setWarningname(true);
-    } else if (!email) {
-      setWarningEmail(true);
     } else if (!password) {
       setWarningPassword(true);
     }
