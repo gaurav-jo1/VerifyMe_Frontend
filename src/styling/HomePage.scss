@@ -59,7 +59,6 @@
       font-size: 30px;
     }
 
-
     span {
       color: white;
       font-size: 30px;
@@ -67,10 +66,10 @@
   }
 
   .HomePage__userinfo-container_1 {
-    @include userInfo(30px)
+    @include userInfo(30px);
   }
   .HomePage__userinfo-container_2 {
-    @include userInfo(15px)
+    @include userInfo(15px);
   }
 
   .HomePage__logout {

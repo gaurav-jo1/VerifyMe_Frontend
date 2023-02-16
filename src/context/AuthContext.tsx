@@ -14,11 +14,11 @@ interface CurrentUserContextType {
   setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  userCreated:boolean;
-  setUserCreated:React.Dispatch<React.SetStateAction<boolean>>;
+  userCreated: boolean;
+  setUserCreated: React.Dispatch<React.SetStateAction<boolean>>;
   callLogout: () => void;
-  signupWarning:boolean;
-  setSignupWarning:React.Dispatch<React.SetStateAction<boolean>>;
+  signupWarning: boolean;
+  setSignupWarning: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface Props {
@@ -43,8 +43,8 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   );
 
   let [loading, setLoading] = useState<boolean>(false);
-  let [userCreated, setUserCreated] = useState<boolean>(false)
-  let [signupWarning, setSignupWarning] = useState<boolean>(false)
+  let [userCreated, setUserCreated] = useState<boolean>(false);
+  let [signupWarning, setSignupWarning] = useState<boolean>(false);
 
   // call logout
 
@@ -107,7 +107,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
         userCreated,
         setUserCreated,
         signupWarning,
-        setSignupWarning
+        setSignupWarning,
       }}
     >
       {loading ? children : null}

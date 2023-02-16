@@ -13,12 +13,13 @@ interface userinfoInterface {
 }
 
 const HomePage: React.FC = () => {
-  const { authTokens,setLoading, callLogout } = useContext(AuthContext);
+  const { authTokens, setLoading, callLogout } = useContext(AuthContext);
 
   const [userInfos, setUserInfos] = useState<userinfoInterface>();
 
   useEffect(() => {
-    axios.get<userinfoInterface>("http://127.0.0.1:8000/user/", {
+    axios
+      .get<userinfoInterface>("http://127.0.0.1:8000/user/", {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + String(authTokens.access),
@@ -26,7 +27,7 @@ const HomePage: React.FC = () => {
       })
       .then((response) => {
         setUserInfos(response.data);
-        setLoading(true)
+        setLoading(true);
       })
       .catch((error) => {
         console.log(error);
@@ -47,7 +48,8 @@ const HomePage: React.FC = () => {
         <button onClick={() => callLogout()}>Log out</button>
       </div>
       <div className="HomePage__userinfo-container_1">
-        <p>Username:&#160; </p><span>{userInfos?.username}</span> 
+        <p>Username:&#160; </p>
+        <span>{userInfos?.username}</span>
       </div>
       <div className="HomePage__userinfo-container_2">
         <p>Email:&#160;</p> <span>{userInfos?.email}</span>

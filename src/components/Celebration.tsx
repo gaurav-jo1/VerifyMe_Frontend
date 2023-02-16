@@ -1,5 +1,5 @@
 import React from "react";
-import "../styling/Celebration.scss"
+import "../styling/Celebration.scss";
 
 const Celebration = () => {
   return (

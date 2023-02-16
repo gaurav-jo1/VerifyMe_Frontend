@@ -20,7 +20,10 @@ const SignupCard = () => {
           </div>
           <div className="SignupCard__container-warning">
             <h1>Your password must contain at least 8 characters.</h1>
-            <h1>Your password can’t be too similar to your other personal information.</h1>
+            <h1>
+              Your password can’t be too similar to your other personal
+              information.
+            </h1>
             <h1>Your password can’t be entirely numeric.</h1>
             <p>😕</p>
           </div>

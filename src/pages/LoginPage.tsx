@@ -17,7 +17,8 @@ const UserPage: React.FC = () => {
   const [loadingScreen, setLoadingScreen] = useState<boolean>(false);
   const [warningUsername, setWarningUsername] = useState<boolean>(false);
   const [warningPassword, setWarningPassword] = useState<boolean>(false);
-  const { setAuthTokens, setUser, setLoading,userCreated,setUserCreated } = useContext(AuthContext);
+  const { setAuthTokens, setUser, setLoading, userCreated, setUserCreated } =
+    useContext(AuthContext);
 
   let navigate = useNavigate();
 
@@ -26,17 +27,18 @@ const UserPage: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     setWarningUsername(false);
     setWarningPassword(false);
-    setError(false)
+    setError(false);
 
     if (username && password) {
       e.preventDefault();
       setLoadingScreen(true);
 
-      axios.post("http://127.0.0.1:8000/api/token/", { username, password })
+      axios
+        .post("http://127.0.0.1:8000/api/token/", { username, password })
         .then((response) => {
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));
-          localStorage.setItem("authTokens",JSON.stringify(response.data));
+          localStorage.setItem("authTokens", JSON.stringify(response.data));
           navigate("/");
           setLoading(true);
         })
@@ -61,14 +63,19 @@ const UserPage: React.FC = () => {
 
   return (
     <div>
-      {loadingScreen ? (<LoadingScreen /> ) : (
+      {loadingScreen ? (
+        <LoadingScreen />
+      ) : (
         <div className="UserPage__container display__flex">
           <Logo />
-          {userCreated ? <Card/> : ""}
+          {userCreated ? <Card /> : ""}
           {userCreated ? <Celebration /> : ""}
           <form className="UserPage__signin">
             <div className="UserPage__signin-welcome">
-              <p> Welcome to <span>VerifyME</span> </p>
+              <p>
+                {" "}
+                Welcome to <span>VerifyME</span>{" "}
+              </p>
             </div>
             <div className="UserPage__signin-signin">
               <h1>Sign in</h1>
@@ -87,28 +94,48 @@ const UserPage: React.FC = () => {
                   <p>Enter you username or email address</p>
                 )}
                 {warningUsername ? (
-                  <input type="text" required placeholder="Username or email address"
-                    value={username} onChange={(e) => setUsername(e.target.value)}
-                    style={{ border: "1px solid red" }}  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Username or email address"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    style={{ border: "1px solid red" }}
+                  />
                 ) : (
-                  <input type="text" required placeholder="Username or email address"
-                    value={username} onChange={(e) => setUsername(e.target.value)}
-                     />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Username or email address"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                 )}
               </div>
               <div className="UserPage__signin-password">
-                {warningPassword ? (<p style={{ color: "red" }}>Enter your password</p> ) 
-                  : ( <p>Enter your password</p> )
-                }
+                {warningPassword ? (
+                  <p style={{ color: "red" }}>Enter your password</p>
+                ) : (
+                  <p>Enter your password</p>
+                )}
 
                 {warningPassword ? (
-                  <input type="password" required placeholder="Password"
-                    value={password} onChange={(e) => setPassword(e.target.value)}
-                    style={{ border: "1px solid red" }}  />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={{ border: "1px solid red" }}
+                  />
                 ) : (
-                  <input type="password" required placeholder="Password"
-                    value={password} onChange={(e) => setPassword(e.target.value)}
-                     />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 )}
               </div>
             </div>
