@@ -1,10 +1,11 @@
-import React, { useState , useContext} from "react";
+import React, { useState, useContext } from "react";
 import Logo from "../components/Logo";
 import "../styling/UserPage.scss";
 import { Link, useNavigate } from "react-router-dom";
 import LoadingScreen from "../components/LoadingScreen";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import SignupCard from "../components/SignupCard";
 
 const SignupPage = () => {
   const [warningUsername, setWarningUsername] = useState<boolean>(false);
@@ -16,9 +17,9 @@ const SignupPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loadingScreen, setLoadingScreen] = useState<boolean>(false);
-  const {setUserCreated} = useContext(AuthContext)
+  const { setUserCreated, signupWarning, setSignupWarning } =
+    useContext(AuthContext);
   let navigate = useNavigate();
-
 
   const handleSignup = (e: React.FormEvent) => {
     setWarningUsername(false);
@@ -29,31 +30,27 @@ const SignupPage = () => {
     if (username && first_name && email && password) {
       e.preventDefault();
       setLoadingScreen(true);
-      
+
       axios
         .post("http://127.0.0.1:8000/register/", {
           username,
           first_name,
           email,
-          password
+          password,
         })
         .then((response) => {
-          console.log(response.data)
-          setUserCreated(true)
+          console.log(response.data);
+          setUserCreated(true);
           navigate("/");
         })
         .catch((error) => {
-          console.log(error.message);
+          console.log("Sign up error", error.message);
+          setSignupWarning(true);
         })
         .finally(() => {
           setLoadingScreen(false);
         });
-    } else if (
-      !username &&
-      !email &&
-      !first_name &&
-      !password
-    ) {
+    } else if (!username && !email && !first_name && !password) {
       setWarningUsername(true);
       setWarningPassword(true);
       setWarningEmail(true);
@@ -76,6 +73,7 @@ const SignupPage = () => {
       ) : (
         <div className="UserPage__container display__flex">
           <Logo />
+          {signupWarning ? <SignupCard /> : ""}
           <form className="UserPage__signin">
             <div className="UserPage__signin-welcome">
               <p>
@@ -97,11 +95,16 @@ const SignupPage = () => {
                     style={{ border: "1px solid red" }}
                     type="email"
                     placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)} 
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 ) : (
-                  <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}  required />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                 )}
               </div>
               <div className="UserPage__signup_username_name">
@@ -116,11 +119,16 @@ const SignupPage = () => {
                       style={{ border: "1px solid red" }}
                       type="text"
                       placeholder="Username"
-                      onChange={(e) => setUsername(e.target.value)} 
+                      onChange={(e) => setUsername(e.target.value)}
                       required
                     />
                   ) : (
-                    <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}  required />
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                    />
                   )}
                 </div>
                 <div className="UserPage__signin-username">
@@ -134,11 +142,16 @@ const SignupPage = () => {
                       style={{ border: "1px solid red" }}
                       type="text"
                       placeholder="Name"
-                      onChange={(e) => setFirst_name(e.target.value)} 
+                      onChange={(e) => setFirst_name(e.target.value)}
                       required
                     />
                   ) : (
-                    <input type="text" placeholder="Name"  onChange={(e) => setFirst_name(e.target.value)} required />
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      onChange={(e) => setFirst_name(e.target.value)}
+                      required
+                    />
                   )}
                 </div>
               </div>
@@ -157,7 +170,12 @@ const SignupPage = () => {
                     required
                   />
                 ) : (
-                  <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                  <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    required
+                  />
                 )}
               </div>
             </div>

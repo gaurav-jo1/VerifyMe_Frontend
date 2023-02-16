@@ -1,0 +1,62 @@
+.SignupCard__container {
+  background: rgba(0, 0, 0, 0.514);
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+
+  .SignupCard__card-container {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: skyblue;
+    border: 1.5px solid rgb(0, 47, 255);
+
+    .SignupCard__container-cross {
+      display: flex;
+
+      h2 {
+        font-size: 40px;
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+      }
+    }
+
+    .SignupCard__container-content {
+      display: flex;
+      .SignupCard__container-img {
+        height: 514px;
+        width: 342px;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .SignupCard__container-warning {
+        padding: 0 30px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+
+        h1 {
+          color: white;
+          text-shadow: 1px 1px 2px black;
+          font-size: 30px;
+          padding-top: 15px;
+        }
+
+        p {
+          font-size: 50px;
+          padding-top: 20px;
+        }
+      }
+    }
+  }
+}
