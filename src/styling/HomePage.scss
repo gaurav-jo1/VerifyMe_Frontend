@@ -40,36 +40,38 @@
     color: white;
   }
 
-  img {
-    padding: 0 10px;
-  }
-
+  
   .HomePage__message-container {
     display: flex;
     align-items: center;
+    margin-left: 28px;
+    img {
+      height: 45px;
+      padding: 0 10px;
+    }
   }
 
-  @mixin userInfo($pt) {
+  @mixin userInfo($pt, $fontp, $fonts) {
     display: flex;
     flex-direction: row;
     padding-top: $pt;
 
     p {
       color: rgb(161, 140, 140);
-      font-size: 30px;
+      font-size: $fontp;
     }
 
     span {
       color: white;
-      font-size: 30px;
+      font-size: $fonts;
     }
   }
 
   .HomePage__userinfo-container_1 {
-    @include userInfo(30px);
+    @include userInfo(30px, 30px, 30px);
   }
   .HomePage__userinfo-container_2 {
-    @include userInfo(15px);
+    @include userInfo(15px, 30px, 30px);
   }
 
   .HomePage__logout {
@@ -87,6 +89,102 @@
       &:hover {
         background-color: red;
       }
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .HomePage__container {
+    h1 {
+      font-size: 100px;
+    }
+
+    p {
+      font-size: 30px;
+    }
+
+    @mixin userInfo($pt, $fontp, $fonts) {
+      padding-top: $pt;
+
+      p {
+        font-size: $fontp;
+      }
+
+      span {
+        font-size: $fonts;
+      }
+    }
+
+    .HomePage__userinfo-container_1 {
+      @include userInfo(30px, 25px, 25px);
+    }
+    .HomePage__userinfo-container_2 {
+      @include userInfo(15px, 25px, 25px);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .HomePage__container {
+    h1 {
+      font-size: 80px;
+    }
+
+    p {
+      font-size: 25px;
+    }
+
+    @mixin userInfo($pt, $fontp, $fonts) {
+      padding-top: $pt;
+
+      p {
+        font-size: $fontp;
+      }
+
+      span {
+        font-size: $fonts;
+      }
+    }
+
+    .HomePage__userinfo-container_1 {
+      @include userInfo(30px, 20px, 20px);
+    }
+    .HomePage__userinfo-container_2 {
+      @include userInfo(15px, 20px, 20px);
+    }
+
+    .HomePage__logout {
+      button {
+        padding: 10px 30px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .HomePage__container {
+    h1 {
+      font-size: 80px;
+      text-align: center;
+    }
+
+    .HomePage__message-container {
+      margin-top: 10px;
+
+      p {
+        font-size: 22px;
+      }
+
+      img {
+        height: 30px;
+      }
+    }
+
+    .HomePage__userinfo-container_1,.HomePage__userinfo-container_2 {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
     }
   }
 }

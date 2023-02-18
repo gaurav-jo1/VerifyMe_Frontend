@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
       <h1>Hello {userInfos?.first_name}</h1>
       <div className="HomePage__message-container">
         <p>You are Verified</p>
-        <img src={verified} alt="" height={35} />
+        <img src={verified} alt="" />
       </div>
       <div className="HomePage__logout">
         <button onClick={() => callLogout()}>Log out</button>
@@ -52,7 +52,8 @@ const HomePage: React.FC = () => {
         <span>{userInfos?.username}</span>
       </div>
       <div className="HomePage__userinfo-container_2">
-        <p>Email:&#160;</p> <span>{userInfos?.email}</span>
+        <p>Email:&#160;</p>
+        <span>{userInfos?.email}</span>
       </div>
     </div>
   );

@@ -86,10 +86,10 @@ const UserPage: React.FC = () => {
               <div className="UserPage__signin-username">
                 {warningUsername ? (
                   <p style={{ color: "red" }}>
-                    Enter you username or email address
+                    Enter you username
                   </p>
                 ) : (
-                  <p>Enter you username or email address</p>
+                  <p>Enter you username </p>
                 )}
                 {warningUsername ? (
                   <input
