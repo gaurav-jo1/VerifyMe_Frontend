@@ -6,8 +6,6 @@ import SignupPage from "./pages/SignupPage";
 import HomePage from "./pages/HomePage";
 import RequireAuth from "./utils/RequireAuth";
 import AuthProvider from "./context/AuthContext";
-import Card from "./components/Card";
-import SignupCard from "./components/SignupCard";
 
 function App() {
   return (
@@ -19,8 +17,6 @@ function App() {
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/card" element={<Card />} />
-          <Route path="/signupcard" element={<SignupCard />} />
         </Routes>
       </div>
     </AuthProvider>

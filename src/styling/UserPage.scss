@@ -1,11 +1,11 @@
 .UserPage__container {
   height: 100vh;
   width: 100%;
-  // background-image: url(../assets/Frame1.png);
+  background-image: url(../assets/Frame1.png);
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-color: rgb(225, 209, 209);
+  background-size: cover;
+  background-position: center center;
+  // background-color: rgb(225, 209, 209);
 }
 
 .UserPage__signin {
@@ -168,6 +168,12 @@
     position: static;
     margin-top: 0px;
     padding: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .UserPage__container {
+    background-size: contain;
   }
 }
 
