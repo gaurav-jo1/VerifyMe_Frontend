@@ -32,21 +32,14 @@
     margin: 12px 0;
   }
 
-  .UserPage__signin-google {
+  .UserPage__signin-logo {
     display: flex;
-    text-align: center;
-    padding: 8px 22px;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
-    width: 190px;
-    // background: rgb(222, 222, 222);
+    width: 100%;
     background-color: rgb(177, 223, 242);
     margin-top: 10px;
-    cursor: pointer;
-
-    p {
-      color: blueviolet;
-      font-size: 14px;
-    }
   }
 
   @mixin siginUpInput($mg) {

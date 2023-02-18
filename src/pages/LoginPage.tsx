@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import Logo from "../components/Logo";
-import Google from "../assets/google.png";
+import verifymelogo from "../assets/v-fav.png";
 import jwt_decode from "jwt-decode";
 import "../styling/UserPage.scss";
 import LoadingScreen from "../components/LoadingScreen";
@@ -73,16 +73,14 @@ const UserPage: React.FC = () => {
           <form className="UserPage__signin">
             <div className="UserPage__signin-welcome">
               <p>
-                {" "}
                 Welcome to <span>VerifyME</span>{" "}
               </p>
             </div>
             <div className="UserPage__signin-signin">
               <h1>Sign in</h1>
             </div>
-            <div className="UserPage__signin-google">
-              <img src={Google} alt="google" height={16} width={16} />
-              <p>&nbsp; Sign in with Google</p>
+            <div className="UserPage__signin-logo">
+              <img src={verifymelogo} alt="verifymelogo" height={35} width={35} />
             </div>
             <div className="UserPage__signin-up">
               <div className="UserPage__signin-username">
