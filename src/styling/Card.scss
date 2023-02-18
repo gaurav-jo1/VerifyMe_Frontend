@@ -6,6 +6,7 @@
   height: 100vh;
   width: 100%;
   z-index: 10;
+  position: absolute;
 }
 
 .Card__container {
@@ -61,4 +62,19 @@
       }
     }
   }
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 610px) {
+  .Card__container-created {
+    display: none;
+  }
+
+  .Card__container {
+    padding: 20px 30px;
+  }
+
 }
