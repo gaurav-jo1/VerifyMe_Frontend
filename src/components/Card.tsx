@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import "../styling/Card.scss";
 import { AuthContext } from "../context/AuthContext";
-import nature from "../assets/nature.png";
+import nature from "../assets/nature.webp";
 
 const Card: React.FC = () => {
   const { setUserCreated } = useContext(AuthContext);

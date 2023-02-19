@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { RxCrossCircled } from "react-icons/rx";
-import forest from "../assets/forest.png";
+import forest from "../assets/forest.webp";
 import "../styling/SignupCard.scss";
 import { AuthContext } from "../context/AuthContext";
 

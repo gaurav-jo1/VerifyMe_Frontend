@@ -32,7 +32,7 @@ const SignupPage = () => {
       setLoadingScreen(true);
 
       axios
-        .post("http://127.0.0.1:8000/register/", {
+        .post("https://verifyme.up.railway.app/register/", {
           username,
           first_name,
           email,

@@ -34,7 +34,7 @@ const UserPage: React.FC = () => {
       setLoadingScreen(true);
 
       axios
-        .post("http://127.0.0.1:8000/api/token/", { username, password })
+        .post("https://verifyme.up.railway.app/api/token/", { username, password })
         .then((response) => {
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));

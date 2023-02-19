@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get<userinfoInterface>("http://127.0.0.1:8000/user/", {
+      .get<userinfoInterface>("https://verifyme.up.railway.app/user/", {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + String(authTokens.access),

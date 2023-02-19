@@ -58,7 +58,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   function updateAccess() {
     if (authTokens) {
       axios
-        .post("http://127.0.0.1:8000/api/token/refresh/", {
+        .post("https://verifyme.up.railway.app/api/token/refresh/", {
           refresh: authTokens.refresh,
         })
         .then(function (response) {
