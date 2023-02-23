@@ -4,7 +4,7 @@ VerifyMe is a user authentication platform designed to simplify the sign-up and 
 
 <hr/>
 
-<h1 align='center'> My Blog Post About Picture Pulse  </h1>
+<h1 align='center'> My Blog Post About VerifyMe </h1>
 
 
 <p align="left">
