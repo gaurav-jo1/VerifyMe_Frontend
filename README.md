@@ -13,4 +13,33 @@ VerifyMe is a user authentication platform designed to simplify the sign-up and 
 <a href="https://gauravjoshi.hashnode.dev/building-a-system-for-user-registration-and-login-using-python-part-1" title="Building a System for User Registration and Login using Python (Part 1)"><strong>Building a System for User Registration and Login using Python (Part 1 )</strong></a>
 <div><strong>Feb 22, 2023 </strong></div>
 <br/>This article is a tutorial on building a backend for user sign-up, login, and authentication using Python
-</p> <br/> <br/>
+</p> <br/>
+<hr/>
+<h1 align='center'> Getting Started </h1>
+
+## Prerequisites
+Make sure you have the following installed on your system:
+
+<ul>
+ <li> <a href="https://nodejs.org/en/t">Node.js</a> </li>
+ <li> NPM </li>
+ <li> TypeScript</li>
+</ul>
+
+You can install TypeScript using the following command:
+
+```npm install --save-dev typescript```
+
+## Installation
+
+1. Clone this repository: &nbsp; ```git clone https://github.com/Gaurav-jo1/VerifyMe_Frontend.git```
+
+2. Navigate to the project directory: &nbsp; ```cd VerifyMe_Frontend```
+
+3. Install the dependencies: &nbsp; ```npm install```
+
+## Running the App
+To run the app, simply run the following command: &nbsp; ```npm run dev```
+
+## License
+This project is licensed under the <a href="https://opensource.org/license/mit/">MIT License.</a>
