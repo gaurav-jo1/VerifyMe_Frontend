@@ -2,6 +2,10 @@
 
 VerifyMe is a user authentication platform designed to simplify the sign-up and login process. Our platform allows users to create an account with just their email, or they can continue with a Google or Apple account. With VerifyMe, you can rest assured that your information is secure and protected. Our advanced security features provide an extra layer of protection for your personal data. Whether you're signing up for a new account or logging into an existing one, VerifyMe makes the process easy, fast, and secure. Say goodbye to the hassle of multiple usernames and passwords and say hello to a simplified and secure authentication experience with VerifyMe.
 
+<div align='center'>
+<img src="https://user-images.githubusercontent.com/93304640/221342691-61189881-a5c8-4660-9a6d-7bf588a2dadd.png" alt="VerifyMe-TS" height="386" width="686"/>
+</div>
+
 <hr/>
 
 <h1 align='center'> My Blog Post About VerifyMe </h1>
