@@ -7,7 +7,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import SignupCard from "../components/SignupCard";
 
-const SignupPage = () => {
+const SignupPage: React.FC  = () => {
   const [warningUsername, setWarningUsername] = useState<boolean>(false);
   const [warningname, setWarningname] = useState<boolean>(false);
   const [warningEmail, setWarningEmail] = useState<boolean>(false);
@@ -95,6 +95,7 @@ const SignupPage = () => {
                     style={{ border: "1px solid red" }}
                     type="email"
                     placeholder="Email"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
@@ -102,6 +103,7 @@ const SignupPage = () => {
                   <input
                     type="email"
                     placeholder="Email"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
@@ -119,6 +121,7 @@ const SignupPage = () => {
                       style={{ border: "1px solid red" }}
                       type="text"
                       placeholder="Username"
+                      value={username} 
                       onChange={(e) => setUsername(e.target.value)}
                       required
                     />
@@ -126,6 +129,7 @@ const SignupPage = () => {
                     <input
                       type="text"
                       placeholder="Username"
+                      value={username} 
                       onChange={(e) => setUsername(e.target.value)}
                       required
                     />
@@ -142,6 +146,7 @@ const SignupPage = () => {
                       style={{ border: "1px solid red" }}
                       type="text"
                       placeholder="Name"
+                      value={first_name}
                       onChange={(e) => setFirst_name(e.target.value)}
                       required
                     />
@@ -149,6 +154,7 @@ const SignupPage = () => {
                     <input
                       type="text"
                       placeholder="Name"
+                      value={first_name}
                       onChange={(e) => setFirst_name(e.target.value)}
                       required
                     />
@@ -166,6 +172,7 @@ const SignupPage = () => {
                     style={{ border: "1px solid red" }}
                     type="password"
                     placeholder="Password"
+                    value={password} 
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
@@ -174,6 +181,7 @@ const SignupPage = () => {
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                    value={password} 
                     required
                   />
                 )}
